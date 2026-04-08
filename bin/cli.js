@@ -153,4 +153,52 @@ program
     }
   });
 
+program
+  .command('submit <skillName>')
+  .description('Đóng góp Skill mới được tạo tại dự án này lên Cốt Lõi (Submit local skill to Global Registry)')
+  .action(async (skillName) => {
+    const localSkillPath = path.join(process.cwd(), '.agent', 'skills', skillName);
+    if (!fs.existsSync(localSkillPath)) {
+      console.log(chalk.red(`❌ Lỗi: Không tìm thấy Skill [${skillName}] trong dự án này.`));
+      process.exit(1);
+    }
+
+    console.log(chalk.cyan(`\n🚀 Hệ thống đang trích xuất Code của Skill [${skillName}] để đẩy về Trụ sở...`));
+    
+    try {
+      const { execSync } = require('child_process');
+      const os = require('os');
+      const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'ag-kit-submit-'));
+      
+      const spinner = ora('Đang lấy kết nối bảo mật tới GitHub Trụ sở (xác thực bằng Git cục bộ)...').start();
+      
+      // Clone repo ẩn vào thư mục tạm (Yêu cầu máy Terminal đã từng clone Github)
+      execSync('git clone https://github.com/truongkyle/ag-kit-cli.git .', { cwd: tempDir, stdio: 'ignore' });
+      
+      spinner.text = 'Đang đồng bộ Code lên Mây Github...';
+      const destPath = path.join(tempDir, 'template', '.agent', 'skills', skillName);
+      await fs.copy(localSkillPath, destPath);
+      
+      execSync('git add .', { cwd: tempDir, stdio: 'ignore' });
+      
+      const status = execSync('git status --porcelain', { cwd: tempDir }).toString();
+      if (!status) {
+        spinner.succeed(chalk.yellow(`Skill [${skillName}] không có thay đổi nào mới để Submit!`));
+        process.exit(0);
+      }
+
+      execSync(`git commit -m "feat(skill): Đóng góp hệ thống Kỹ năng mới [${skillName}]"`, { cwd: tempDir, stdio: 'ignore' });
+      execSync('git push origin main', { cwd: tempDir, stdio: 'ignore' });
+
+      spinner.succeed(chalk.green(`Tuyệt vời! Skill [${skillName}] đã được nạp thành công vào Lò phản ứng Github cốt lõi.`));
+      console.log(`📡 ${chalk.yellow('Máy chủ GitHub Actions đang được kích hoạt tự động hóa...')} `);
+      console.log(`👉 Bạn chỉ việc háo hức chờ khoảng 30s nữa là hệ thống sẽ tự sinh Version mới và Push lên NPM Registry!\n`);
+
+    } catch (err) {
+      console.log(chalk.red(`\n❌ Quá trình Submit bị từ chối!`));
+      console.log(chalk.gray(`Gợi ý: Lệnh này đẩy code thẳng lên nhánh main của Repo truongkyle, do đó yêu cầu Terminal của bạn đang login đúng tài khoản GitHub của truongkyle.`));
+      process.exit(1);
+    }
+  });
+
 program.parse(process.argv);
