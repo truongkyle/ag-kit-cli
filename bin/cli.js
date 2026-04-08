@@ -102,4 +102,55 @@ program
     }
   });
 
+program
+  .command('update')
+  .description('Đồng bộ bộ Kỹ năng gốc từ hệ thống (Sync core skills from the system registry)')
+  .action(async () => {
+    const targetBaseDir = path.join(process.cwd(), '.agent');
+    const sourceDir = path.join(__dirname, '..', 'template', '.agent');
+
+    console.log(chalk.cyan(`\n✨ Đang khởi chạy tính năng UPDATE đồng bộ từ @xaviele/ag-kit\n`));
+
+    // Yêu cầu phải có .agent
+    if (!fs.existsSync(targetBaseDir)) {
+      console.log(chalk.red(`❌ LỖI ĐỒNG BỘ | UPDATE FAILED: Dự án của bạn chưa từng được thiết lập móng .agent lõi.`));
+      console.log(`💡 Vui lòng dùng lệnh: ${chalk.green('npx @xaviele/ag-kit init')} trước tiên.\n`);
+      process.exit(1);
+    }
+
+    const spinner = ora('Phân tích cập nhật, tạo khiên bảo vệ Cấu hình dự án (User Rules / Configs)...').start();
+
+    // Thuật toán màng lọc (Immunity Shield)
+    const filterSync = (src, dest) => {
+      const srcName = path.basename(src);
+      // Danh sách các Item bất khả xâm phạm nếu đã tồn tại đẻ bảo vệ Config của Khách Hàng
+      const protectedItems = [
+        'rules', 
+        'scratch', 
+        'ARCHITECTURE.md', 
+        'mcp_config.json', 
+        '.system_generated'
+      ];
+      
+      // Nếu folder/file thuộc diện bảo vệ và ĐÃ TỒN TẠI ở máy khách -> BLOCK Không cho đè
+      if (protectedItems.includes(srcName) && fs.existsSync(dest)) {
+        return false;
+      }
+      return true; // Mọi thứ khác như skills/, workflows/ được cấp phép update đè
+    };
+
+    try {
+      await fs.copy(sourceDir, targetBaseDir, {
+        overwrite: true,
+        filter: filterSync
+      });
+      spinner.succeed(chalk.green(`Tuyệt vời! Toàn bộ 45 Skills và 12 Workflows đã được Cập Nhập (Sync) mới nhất.`));
+      console.log(`👉 Các hệ thống cá nhân hóa (ARCHITECTURE.md, mcp_config.json, rules) được bảo toàn tuyệt đối 100%.\n`);
+    } catch (err) {
+      spinner.fail(chalk.red(`Đồng bộ thất bại! | Sync failed!`));
+      console.error(err);
+      process.exit(1);
+    }
+  });
+
 program.parse(process.argv);

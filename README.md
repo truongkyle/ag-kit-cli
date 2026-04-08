@@ -2,71 +2,52 @@
 
 🚀 **Antigravity Agent Kit** is a powerful CLI utility that injects an advanced AI Agent workspace into any of your projects. Packed with **45 specialized skills**, **12 automated workflows**, and smart project configurations.
 
-## 📦 Installation & Usage
+## 📦 Cài đặt thao tác nhanh (Quick Install)
 
-You don't need to install it globally. Simply use `npx` in the root directory of your target project:
+Chỉ cần chạy trực tiếp bằng lệnh `npx` ở thư mục gốc của dự án bạn muốn cài đặt hệ thống AI (Run directly via `npx` in your target project root):
 
 ```bash
 npx @xaviele/ag-kit init
 ```
 
-### Options
+## 🎯 Các lệnh Chuyên biệt (Specialized Commands)
 
-If your project already contains an `.agent` folder and you want to clean it up and fetch the latest version from this kit, use the `--force` (or `-f`) flag:
-
-```bash
-npx @xaviele/ag-kit init --force
-```
-
-## ✨ Features
-
-- **Instant AI Brain Setup:** Automatically spawns an `.agent` directory with all curated prompts, context references, and metadata to guide AI coding assistants (like Claude, Gemini, Cursor).
-- **Rich Skillset:** Pre-packaged with 45 specialized skills across Backend, API design, Frontend, SEO, AI Prompting, Security, and more.
-- **Automated Workflows:** 12 ready-to-use workflows (`/deploy`, `/ui-ux-pro-max`, `/brainstorm` etc.) to standardize your development lifecycle.
-- **Universal Agnostic:** Framework-independent. Works flawlessly for NestJS, Next.js, React Native, Zalo Mini Apps, and more.
-
-## 🎯 Specialized Commands
-
-- `npx @xaviele/ag-kit add <skill>`: Inject a single skill into an already initialized project quickly without resetting the entire workspace.
-
-## 🛣️ Roadmap (Coming Soon)
-- `ag-kit update`: Selectively sync and update missing skills without overwriting project-specific local rules.
+| Lệnh / Command | Tính năng / Functionality | Mô tả / Description |
+|----------------|--------------------------|----------------------|
+| `init` | Khởi tạo toàn bộ lõi / Core setup | Tự động sinh mục `.agent/` với toàn bộ hệ thống gốc. Dùng cờ `--force` để cài đè (Reset). |
+| `add <skill>` | Thêm 1 kỹ năng lẻ / Add single | Bổ sung siêu tốc bất kỳ kỹ năng nào bị thiếu vào dự án đã cài đặt (VD: `add clean-code`). |
+| `update` | Cập nhật đồng bộ / Safe Sync | Tải các Kỹ năng gốc mới nhất từ Master Repo nhưng **BẢO TOÀN TUYỆT ĐỐI** các cài đặt (Rules, Cấu hình) của bạn hiện tại. |
 
 ---
 
-# Tiếng Việt
+## 🛠️ Cấu trúc "Bộ não AI" có gì? (What's inside the AI Brain?)
 
-🚀 **Antigravity Agent Kit** là một bộ công cụ dòng lệnh (CLI) cực mạnh giúp bơm "bộ não AI" vào bất kỳ dự án nào của bạn. Gói này được trang bị sẵn **45 kỹ năng chuyên sâu (skills)**, **12 luồng làm việc tự động (workflows)** và các quy tắc dự án thông minh.
+Sau khi cài đặt xong, thư mục `.agent` của bạn sẽ đóng vai trò điều hướng mọi hành vi của Trợ lý lập trình AI (Claude, Cursor, Gemini)... với 3 khối kiến trúc chính:
 
-## 📦 Cài đặt và Sử dụng
+### 1. 🧠 Kỹ năng (45 Skills)
+Bộ Kit chứa sẵn vô số kỹ năng chuyên môn sâu, biến file text thành sổ tay để hướng dẫn AI làm việc như một kỹ sư chuyên nghiệp (Senior Engineer).
+*   **Frontend & Web:** Kỹ năng viết React, Tailwind v4, Mobile Design, Web Testing (Playwright), Tối ưu hoá Waterfall fetching.
+*   **Hệ thống & Backend:** Thiết kế kiến trúc Database logic, REST & GraphQL API, Quản lý Server, Mẹo Deploy an toàn.
+*   **Bảo mật & Tối ưu:** Clean Code quy chuẩn quốc tế, Rà quét lỗ hổng rủi ro (Vulnerability scanner), Chiến thuật Red-team, Đo tốc độ web 2025.
+*   **Xây dựng Super Apps:** Kỹ năng code Zalo Mini App thần tốc, giao diện ZaUI cao cấp, UI/UX Pro Max.
 
-Bạn không cần phải tải rác về máy tính bằng cách cài đặt toàn cầu (global). Chỉ cần chạy trực tiếp bằng lệnh `npx` ở thư mục gốc của dự án bạn muốn cài đặt:
+### 2. 🔄 Luồng làm việc tự động (12 Workflows)
+Các phím tắt quy trình (kiểu `/slash-commands`) chuẩn hóa vòng đời phát triển dự án. Chẳng hạn:
+*   `/brainstorm`: Ép AI động não, rào trước đón sau giải quyết triệt để edge-cases trước khi hùng hục lao vào code.
+*   `/plan`: Yêu cầu AI viết Kế hoạch triển khai (Implementation Plan File) rất kĩ từng Component để bạn Phê duyệt trước khi làm.
+*   `/ui-ux-pro-max`: Quy trình chuyên biệt ép AI không được dùng Bootstrap cũ rích mà phải thiết kế giao diện Glassmorphism, Gradient bóng mượt.
+*   `/test`: Tự động lùng sục Source Code và đính kèm Unit test chuẩn mô hình AAA.
 
-```bash
-npx @xaviele/ag-kit init
-```
+### 3. 🛡️ Quy tắc (Rules) & Cấu hình (Architecture)
+Khu vực thiết lập giới hạn cho Trợ lý:
+*   `rules/`: Chứa các quy định riêng của bạn hoặc tổ chức. Ví dụ: "Luôn luôn giải thích bằng Tiếng Việt", "Nghiêm cấm dùng thư viện Moment.js", v.v.
+*   `ARCHITECTURE.md` / `mcp_config.json`: Tài liệu ghi chú kiến trúc hệ thống riêng biệt của bạn (Hệ sinh thái AI sẽ scan các file này đầu tiên để nắm ngữ cảnh Codebase hiện hành).
 
-### Các Tùy chọn (Options)
+## 🚀 Các Trường hợp sử dụng tiêu biểu (Use Cases)
 
-Trong trường hợp dự án của bạn đã có sẵn thư mục `.agent` và bạn muốn ghi đè/làm sạch bản cũ để lấy bản mới nhất từ bộ Kit này, hãy sử dụng thêm cờ `--force` (hoặc `-f`):
-
-```bash
-npx @xaviele/ag-kit init --force
-```
-
-## ✨ Tính năng nổi bật
-
-- **Khởi tạo bộ não AI tức thì:** Tự động sinh ra cấu trúc thư mục `.agent` chứa toàn bộ system prompts chuẩn chỉ để định hướng cho các trợ lý ảo (hỗ trợ Claude, Gemini, Cursor...).
-- **Kho Kỹ năng Khổng lồ:** Tích hợp 45 kỹ năng chuyên môn từ Backend, API, Frontend, thiết kế UI/UX, Bảo mật, viết Prompt đến tối ưu SEO.
-- **Hệ thống Workflow tự động:** 12 lệnh luồng công việc như `/deploy`, `/ui-ux-pro-max`, `/brainstorm` v.v. để nhanh chóng chuẩn hóa vòng đời phát triển dự án.
-- **Thích ứng mọi hệ thống:** Hoạt động trơn tru bất kể bạn dùng Framework nào (NestJS, React, Mobile app hay Zalo Mini App).
-
-## 🎯 Các lệnh Chuyên biệt
-
-- Cú pháp `npx @xaviele/ag-kit add <tên-kỹ-năng>`: Bổ sung siêu tốc bất kỳ kỹ năng (skill) đơn lẻ nào vào thư viện dự án của bạn (Dự án bắt buộc phải từng chạy lệnh `init` trước đó).
-
-## 🛣️ Lộ trình Phát triển (Sắp ra mắt)
-- Cú pháp `ag-kit update`: Cập nhật đồng bộ các Kỹ năng gốc từ hệ thống mà không làm mất cấu trúc cài đặt hiện tại.
+1. **Khởi tạo Siêu ứng dụng (VD: Zalo Mini App Taisun):** Bạn thiết lập dự án trống, cài Gói Kit, sau đó chat với AI: *"Hãy dùng lệnh `/ui-ux-pro-max` và thiết kế màn hình Index"* -> AI lập tức tuân thủ quy chuẩn thiết kế Mobile phẳng, áp dụng Style chuẩn xác.
+2. **Review Code & Kiến trúc Hệ thống:** Dùng quy trình `/orchestrate` (Điều phối), AI sẽ tự gọi ra rất nhiều Kỹ sư ảo (Frontend Specialist, Backend Architect, Security Auditor) cùng hội đồng rà soát bảo mật trang Repo giúp bạn.
+3. **Tái sinh mã nguồn cũ:** Thả bộ Kit vào đống code đã bám bụi, gõ vào luồng chat: *"Hãy dọn dẹp các biến rác theo chuẩn skill `clean-code` và `react-best-practices`"* -> AI tự thực thi cải tạo từng File.
 
 ## Khoá Bản quyền (License)
 MIT © Xavie Le
