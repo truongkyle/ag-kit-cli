@@ -25,9 +25,12 @@ npx @xaviele/ag-kit init --force
 - **Automated Workflows:** 12 ready-to-use workflows (`/deploy`, `/ui-ux-pro-max`, `/brainstorm` etc.) to standardize your development lifecycle.
 - **Universal Agnostic:** Framework-independent. Works flawlessly for NestJS, Next.js, React Native, Zalo Mini Apps, and more.
 
+## 🎯 Specialized Commands
+
+- `npx @xaviele/ag-kit add <skill>`: Inject a single skill into an already initialized project quickly without resetting the entire workspace.
+
 ## 🛣️ Roadmap (Coming Soon)
 - `ag-kit update`: Selectively sync and update missing skills without overwriting project-specific local rules.
-- `ag-kit add <skill>`: Inject single skills on demand quickly.
 
 ---
 
@@ -58,9 +61,12 @@ npx @xaviele/ag-kit init --force
 - **Hệ thống Workflow tự động:** 12 lệnh luồng công việc như `/deploy`, `/ui-ux-pro-max`, `/brainstorm` v.v. để nhanh chóng chuẩn hóa vòng đời phát triển dự án.
 - **Thích ứng mọi hệ thống:** Hoạt động trơn tru bất kể bạn dùng Framework nào (NestJS, React, Mobile app hay Zalo Mini App).
 
+## 🎯 Các lệnh Chuyên biệt
+
+- Cú pháp `npx @xaviele/ag-kit add <tên-kỹ-năng>`: Bổ sung siêu tốc bất kỳ kỹ năng (skill) đơn lẻ nào vào thư viện dự án của bạn (Dự án bắt buộc phải từng chạy lệnh `init` trước đó).
+
 ## 🛣️ Lộ trình Phát triển (Sắp ra mắt)
-- Cú pháp `ag-kit update`: Cập nhật đồng bộ các Kỹ năng mới từ hệ thống nguồn mà không làm mất cấu hình ghi đè của dự án hiện tại.
-- Cú pháp `ag-kit add <skill>`: Bổ sung nhanh các kỹ năng đơn lẻ theo yêu cầu.
+- Cú pháp `ag-kit update`: Cập nhật đồng bộ các Kỹ năng gốc từ hệ thống mà không làm mất cấu trúc cài đặt hiện tại.
 
 ## Khoá Bản quyền (License)
 MIT © Xavie Le
